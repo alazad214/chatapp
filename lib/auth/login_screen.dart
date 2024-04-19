@@ -1,11 +1,14 @@
 import 'package:chatapp/auth/signup_screen.dart';
+import 'package:chatapp/controllers/auth_controller.dart';
 import 'package:chatapp/widgets/custom_buttom.dart';
 import 'package:chatapp/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class LogIn_Screen extends StatelessWidget {
-  const LogIn_Screen({super.key});
+  LogIn_Screen({super.key});
+
+  final controller = Get.put(Auth_Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -39,19 +42,28 @@ class LogIn_Screen extends StatelessWidget {
                   Custom_textField(
                     hinttext: "email",
                     prefixicon: Icons.email,
+                    onchanged: (emeil) {
+                      controller.email.value = emeil;
+                    },
                   ),
                   const SizedBox(height: 15),
                   Custom_textField(
                     hinttext: "password",
                     prefixicon: Icons.remove_red_eye,
                     obscuretext: true,
+                    onchanged: (password) {
+                      controller.password.value = password;
+                    },
                   ),
                   const SizedBox(height: 25),
 
                   //Sign in Button--->>
-                  const Custom_Button(
+                  Custom_Button(
                     text: "Sign in",
                     color: Colors.blueGrey,
+                    ontap: () {
+                      controller.Log_In();
+                    },
                   ),
                   const SizedBox(height: 10),
                   Row(

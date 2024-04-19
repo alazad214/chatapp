@@ -3,10 +3,13 @@ import 'package:chatapp/widgets/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controllers/auth_controller.dart';
 import '../widgets/custom_buttom.dart';
 
 class SignUp_Screen extends StatelessWidget {
-  const SignUp_Screen({super.key});
+  SignUp_Screen({super.key});
+
+  final controller = Get.put(Auth_Controller());
 
   @override
   Widget build(BuildContext context) {
@@ -40,24 +43,36 @@ class SignUp_Screen extends StatelessWidget {
                   Custom_textField(
                     hinttext: "email",
                     prefixicon: Icons.email,
+                    onchanged: (email) {
+                      controller.email.value = email;
+                    },
                   ),
                   const SizedBox(height: 15),
                   Custom_textField(
                     hinttext: "password",
                     prefixicon: Icons.remove_red_eye,
                     obscuretext: true,
+                    onchanged: (password) {
+                      controller.password.value = password;
+                    },
                   ),
                   const SizedBox(height: 15),
                   Custom_textField(
                     hinttext: "Confirm password",
                     prefixicon: Icons.remove_red_eye,
                     obscuretext: true,
+                    onchanged: (password) {
+                      controller.confirmpassword.value = password;
+                    },
                   ),
                   const SizedBox(height: 25),
                   //Sign up Button--->>
-                  const Custom_Button(
+                  Custom_Button(
                     text: "Sign up",
                     color: Colors.blueGrey,
+                    ontap: () {
+                      controller.SignUp();
+                    },
                   ),
                   const SizedBox(height: 10),
                   Row(
