@@ -22,7 +22,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       if (user == null) {
         Get.off(SignUp_Screen());
       } else {
-        Get.offAll(const Home_Screen());
+        Get.offAll( Home_Screen());
       }
     });
     super.initState();
@@ -38,7 +38,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
           height: screenSize.height / 1,
           alignment: Alignment.center,
           child: Center(
-              child: Lottie.asset("assets/animations/anim.json", height: 100)),
+              child: Lottie.asset("assets/animation/anim.json", height: 100)),
         )
       ],
     ));
