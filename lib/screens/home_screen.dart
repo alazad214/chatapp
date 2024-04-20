@@ -1,4 +1,5 @@
 import 'package:chatapp/controllers/auth_controller.dart';
+import 'package:chatapp/screens/chat_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -42,37 +43,50 @@ class Home_Screen extends StatelessWidget {
                         color: Colors.blue,
                       );
                     }
-
+                    final data = snapshot.data!.docs;
                     return SizedBox(
-                      height: 100,
                       child: ListView.builder(
-                          itemCount: snapshot.data!.docs.length,
+                          itemCount: data.length,
                           shrinkWrap: true,
                           primary: true,
-                          scrollDirection: Axis.horizontal,
+                          scrollDirection: Axis.vertical,
                           itemBuilder: (_, index) {
-                            final data = snapshot.data!.docs[index];
-
-                            return Container(
-                              margin: EdgeInsets.symmetric(
-                                vertical: 20,
-                              ),
-                              decoration: BoxDecoration(
-                                  color: Colors.blueGrey,
-                                  border: Border.all(color: Colors.blueGrey),
-                                  borderRadius: BorderRadius.circular(6)),
-                              child: Row(
+                            return InkWell(
+                              onTap: () {
+                                Get.to(Chat_Screen(
+                                  data: data[index],
+                                ));
+                              },
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Container(
-                                    padding: const EdgeInsets.symmetric(
+                                    margin: const EdgeInsets.symmetric(
                                         horizontal: 20, vertical: 10),
                                     decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(6)),
-                                    child: Text(data["email"]),
-                                  ),
-                                  IconButton(
-                                      onPressed: () {},
-                                      icon: Icon(Icons.arrow_forward_ios))
+                                        borderRadius: BorderRadius.circular(8),
+                                        border: Border.all()),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 20, vertical: 10),
+                                          decoration: BoxDecoration(
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          child: Text(data[index]["email"]),
+                                        ),
+                                        IconButton(
+                                            onPressed: () {},
+                                            icon: Icon(Icons.arrow_forward_ios))
+                                      ],
+                                    ),
+                                  )
                                 ],
                               ),
                             );
