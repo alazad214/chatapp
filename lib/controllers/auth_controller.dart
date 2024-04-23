@@ -17,7 +17,7 @@ class Auth_Controller extends GetxController {
   final auth = FirebaseAuth.instance;
   final users = FirebaseAuth.instance.currentUser;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+//SignUP------------>>
   SignUp() async {
     if (password.value != confirmpassword.value) {
       Get.snackbar("Invalid password", "Password doesn't matched");
@@ -37,6 +37,13 @@ class Auth_Controller extends GetxController {
             'uid': value.user!.uid,
           });
           update();
+          await _firestore
+              .collection('users')
+              .doc(FirebaseAuth.instance.currentUser!.uid)
+              .set({
+            "name": name,
+            "email": email,
+          });
           Get.offAll(Home_Screen());
         }
       });
@@ -48,6 +55,7 @@ class Auth_Controller extends GetxController {
     }
   }
 
+//Log in------------>>
   Log_In() async {
     isloading.value = true;
     update();
@@ -78,6 +86,7 @@ class Auth_Controller extends GetxController {
     }
   }
 
+//Sign out------------>>
   Future signOut() async {
     FirebaseAuth _auth = FirebaseAuth.instance;
     try {
@@ -85,7 +94,7 @@ class Auth_Controller extends GetxController {
         Get.offAll(LogIn_Screen());
       });
     } on FirebaseAuthException catch (e) {
-      Get.snackbar("Error",e.message?? "something wrong");
+      Get.snackbar("Error", e.message ?? "something wrong");
     }
   }
 }

@@ -1,5 +1,5 @@
 import 'package:chatapp/auth/signup_screen.dart';
-import 'package:chatapp/screens/home_screen.dart';
+import 'package:chatapp/screens/message_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -22,7 +22,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       if (user == null) {
         Get.off(SignUp_Screen());
       } else {
-        Get.offAll( Home_Screen());
+        Get.offAll( Message_Screen());
       }
     });
     super.initState();
