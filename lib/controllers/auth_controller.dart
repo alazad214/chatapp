@@ -1,5 +1,6 @@
 import 'package:chatapp/auth/login_screen.dart';
-import 'package:chatapp/screens/home_screen.dart';
+import 'package:chatapp/screens/message_screen.dart';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
@@ -44,7 +45,7 @@ class Auth_Controller extends GetxController {
             "name": name,
             "email": email,
           });
-          Get.offAll(Home_Screen());
+          Get.offAll(Message_Screen());
         }
       });
     } on FirebaseAuthException catch (error) {
@@ -75,7 +76,7 @@ class Auth_Controller extends GetxController {
               'uid': value.user!.uid,
             });
           }
-          Get.offAll(Home_Screen());
+          Get.offAll(Message_Screen());
           Get.snackbar("Success", "Login Successfully");
         }
       });

@@ -14,7 +14,7 @@ class SignUp_Screen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white54,
+      backgroundColor: Colors.blueGrey,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Padding(
@@ -41,7 +41,7 @@ class SignUp_Screen extends StatelessWidget {
                   const SizedBox(height: 20),
                   //Textfield--->>
                   Custom_textField(
-                    hinttext: "email",
+                    hinttext: "email...",
                     prefixicon: Icons.email,
                     onchanged: (email) {
                       controller.email.value = email;
@@ -49,7 +49,7 @@ class SignUp_Screen extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   Custom_textField(
-                    hinttext: "password",
+                    hinttext: "password...",
                     prefixicon: Icons.remove_red_eye,
                     obscuretext: true,
                     onchanged: (password) {
@@ -58,7 +58,7 @@ class SignUp_Screen extends StatelessWidget {
                   ),
                   const SizedBox(height: 15),
                   Custom_textField(
-                    hinttext: "Confirm password",
+                    hinttext: "Confirm password...",
                     prefixicon: Icons.remove_red_eye,
                     obscuretext: true,
                     onchanged: (password) {
@@ -69,7 +69,7 @@ class SignUp_Screen extends StatelessWidget {
                   //Sign up Button--->>
                   Custom_Button(
                     text: "Sign up",
-                    color: Colors.blueGrey,
+                    color: Colors.amberAccent,
                     ontap: () {
                       controller.SignUp();
                     },

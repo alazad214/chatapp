@@ -22,7 +22,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
       if (user == null) {
         Get.off(SignUp_Screen());
       } else {
-        Get.offAll( Message_Screen());
+        Get.offAll(Message_Screen());
       }
     });
     super.initState();
