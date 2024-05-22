@@ -1,4 +1,5 @@
 import 'package:chatapp/screens/home_screen.dart';
+import 'package:chatapp/screens/welcome_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,7 +19,7 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
       if (user == null) {
-        Get.off(HomeScreen());
+        Get.off(WelcomeScreen());
       } else {
         Get.offAll(HomeScreen());
       }
