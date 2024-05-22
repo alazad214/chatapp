@@ -1,9 +1,7 @@
-import 'package:chatapp/auth/signup_screen.dart';
-import 'package:chatapp/screens/message_screen.dart';
+import 'package:chatapp/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:lottie/lottie.dart';
 
 class Splash_Screen extends StatefulWidget {
@@ -20,9 +18,9 @@ class _Splash_ScreenState extends State<Splash_Screen> {
   void initState() {
     Future.delayed(const Duration(seconds: 2), () {
       if (user == null) {
-        Get.off(SignUp_Screen());
+        Get.off(HomeScreen());
       } else {
-        Get.offAll(Message_Screen());
+        Get.offAll(HomeScreen());
       }
     });
     super.initState();
