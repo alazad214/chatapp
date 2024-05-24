@@ -1,36 +1,28 @@
+
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, this.text, this.ontap});
-  final text;
-  final ontap;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: ontap,
-      child: Container(
-        height: 60,
-        width: double.infinity,
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          gradient: const LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [
-              Colors.blue,
-              Colors.white,
-              Colors.blue,
-            ],
-          ),
-          borderRadius: BorderRadius.circular(12),
-        ),
+Widget authButton(String title, final Function onAction) {
+  return InkWell(
+    onTap: () {
+      onAction();
+    },
+    child: Container(
+      height: 48.h,
+      decoration: BoxDecoration(
+        color: Colors.green,
+        borderRadius: BorderRadius.all(Radius.circular(5.r)),
+      ),
+      child: Center(
         child: Text(
-          text,
+          title,
           style: TextStyle(
-              color: Colors.black, fontSize: 16, fontWeight: FontWeight.bold),
+            fontWeight: FontWeight.w500,
+            fontSize: 17.sp,
+            color: Colors.white,
+          ),
         ),
       ),
-    );
-  }
+    ),
+  );
 }

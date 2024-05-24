@@ -67,4 +67,6 @@ flutter {
 
 dependencies {
     implementation 'com.android.support:multidex:1.0.3'
+    implementation platform('com.google.firebase:firebase-bom:33.0.0') // সর্বশেষ BOM সংস্করণ ব্যবহার করুন
+    implementation 'com.google.firebase:firebase-analytics'
 }
